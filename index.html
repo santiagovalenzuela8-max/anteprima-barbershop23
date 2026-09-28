@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Barbershop.23 Verona</title>
+<meta name="description" content="Barbershop.23 — barberia e frizerie românească a Verona, Borgo Roma. Fade, tagli classici e barba. Via Pier Fortunato Calvi 18. Martedì–sabato 10:00–20:00.">
+<meta name="theme-color" content="#131416">
+<meta property="og:title" content="Barbershop.23 · Verona">
+<meta property="og:description" content="L'eccellenza del taglio rumeno a Verona Borgo Roma. Fade, classic cuts, sharp details.">
+<meta property="og:image" content="assets/img/salone-ampio.jpg">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;900&family=Bodoni+Moda:ital,opsz,wght@1,6..96,400;1,6..96,500&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+:root{
+  color-scheme: dark;
+  --wall:#131416;        /* parete grafite */
+  --wall-2:#1b1d20;
+  --wall-3:#25282c;
+  --led:#eef1f4;         /* luce LED */
+  --led-dim:#a7adb4;
+  --led-faint:#6b7179;
+  --line:#2e3237;
+  --brass:#c9a56a;       /* ottone insegna */
+  --brass-dim:#8f7445;
+  --pole-red:#c9362c;
+  --pole-blue:#2f5bbd;
+
+  --f-display:"Big Shoulders Display","Oswald","Arial Narrow",Impact,sans-serif;
+  --f-accent:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+
+  --gutter:clamp(16px,4vw,48px);
+  --maxw:1240px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--wall);color:var(--led);
+  font-family:var(--f-body);font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  padding-top:env(safe-area-inset-top,0px);
+}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:2px}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+.eyebrow{
+  font-family:var(--f-body);font-size:12.5px;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--brass);display:flex;align-items:center;gap:12px;
+}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--brass)}
+.it{font-family:var(--f-accent);font-style:italic;font-weight:400;text-transform:none;letter-spacing:0}
+
+/* ---------- barra superiore ---------- */
+.nav{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:50;
+  background:color-mix(in srgb,var(--wall) 82%,transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;transition:border-color .3s;
+}
+.nav.scrolled{border-bottom-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:68px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:40px;height:40px}
+.brand span{font-family:var(--f-display);font-weight:700;font-size:22px;letter-spacing:.04em;text-transform:uppercase}
+.brand b{color:var(--brass);font-weight:700}
+.nav ul{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-size:14px;font-weight:500;letter-spacing:.06em;color:var(--led-dim);transition:color .2s}
+.nav ul a:hover{color:var(--led)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--f-body);font-weight:600;font-size:15px;letter-spacing:.02em;
+  padding:14px 22px;border-radius:2px;text-decoration:none;cursor:pointer;
+  border:1px solid var(--led);background:var(--led);color:var(--wall);
+  transition:background .2s,color .2s,border-color .2s,transform .2s;
+}
+.btn:hover{background:transparent;color:var(--led)}
+.btn.ghost{background:transparent;color:var(--led);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--led)}
+.btn.brass{background:var(--brass);border-color:var(--brass);color:#16130d}
+.btn.brass:hover{background:transparent;color:var(--brass)}
+.btn svg{width:18px;height:18px;flex:none}
+.nav .btn{padding:10px 16px;font-size:14px}
+@media (max-width:860px){.nav ul{display:none}}
+@media (max-width:420px){.nav .btn .lbl{display:none}}
+
+/* ---------- hero: il soffitto ---------- */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.ceiling{
+  position:absolute;inset:0 0 auto 0;height:64%;width:100%;
+  display:block;pointer-events:auto;
+  mask-image:linear-gradient(#000 30%,transparent 92%);
+  -webkit-mask-image:linear-gradient(#000 30%,transparent 92%);
+}
+.hero .wrap{
+  position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,72px);
+  align-items:end;padding-block:clamp(170px,22vw,290px) clamp(48px,7vw,88px);
+  pointer-events:none;
+}
+.hero .wrap > *{pointer-events:auto}
+.hero h1{
+  font-family:var(--f-display);font-weight:900;text-transform:uppercase;
+  font-size:clamp(64px,13vw,180px);line-height:.84;letter-spacing:-.005em;
+}
+.hero h1 .dot{color:var(--brass)}
+.hero h1 .it{
+  display:block;font-size:.42em;line-height:1.1;color:var(--led-dim);margin-top:.18em;letter-spacing:-.01em;
+}
+.hero-copy{display:grid;gap:26px;max-width:520px;text-shadow:0 1px 18px var(--wall)}
+.hero-copy .lead{font-size:clamp(18px,1.6vw,21px);color:var(--led-dim);line-height:1.55}
+.hero-copy .lead strong{color:var(--led);font-weight:600}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px}
+.status{
+  display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--led-dim);
+}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--led-faint);box-shadow:0 0 0 4px rgba(255,255,255,.04)}
+.status.open i{background:#5fcf86;box-shadow:0 0 0 4px rgba(95,207,134,.14)}
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;padding-top:clamp(190px,40vw,260px)}
+}
+
+/* ---------- palo del barbiere: separatore ---------- */
+.pole{
+  height:10px;
+  background:repeating-linear-gradient(-45deg,
+    var(--pole-red) 0 14px,var(--led) 14px 28px,var(--pole-blue) 28px 42px,var(--led) 42px 56px);
+  background-size:79.2px 10px;
+  animation:pole 2.4s linear infinite;
+}
+@keyframes pole{to{background-position:79.2px 0}}
+
+/* ---------- sezioni ---------- */
+section{padding-block:clamp(72px,10vw,136px)}
+.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:end;margin-bottom:clamp(40px,6vw,72px)}
+.sec-head h2{
+  font-family:var(--f-display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(44px,7vw,92px);line-height:.9;margin-top:18px;
+}
+.sec-head h2 .it{font-size:.62em;color:var(--brass)}
+.sec-head p{color:var(--led-dim);max-width:52ch}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr}}
+
+/* ---------- mestiere ---------- */
+.craft{background:var(--wall-2);border-bottom:1px solid var(--line)}
+.craft-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.craft-item{padding:34px clamp(0px,2vw,28px) 8px 0;display:grid;gap:14px;align-content:start}
+.craft-item + .craft-item{border-left:1px solid var(--line);padding-left:clamp(20px,2.4vw,32px)}
+.craft-item h3{font-family:var(--f-display);font-weight:700;font-size:34px;text-transform:uppercase;letter-spacing:.01em}
+.craft-item p{color:var(--led-dim);font-size:16px}
+.craft-item .hexicon{width:44px;height:44px;color:var(--brass)}
+@media (max-width:760px){
+  .craft-grid{grid-template-columns:1fr}
+  .craft-item + .craft-item{border-left:0;border-top:1px solid var(--line);padding-left:0}
+  .craft-item{padding-bottom:30px}
+}
+
+/* ---------- listino ---------- */
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px)}
+.menu-col{display:grid;gap:44px;align-content:start}
+.menu-group h3{
+  font-family:var(--f-body);font-size:12.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--led-faint);padding-bottom:14px;border-bottom:1px solid var(--line);
+  display:flex;justify-content:space-between;
+}
+.menu ul{list-style:none;margin:0;padding:0}
+.menu li{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:14px;
+  padding:18px 0;border-bottom:1px solid var(--line);cursor:pointer;
+  transition:padding .25s;
+}
+.menu li:hover{padding-left:8px}
+.menu li .n{font-family:var(--f-display);font-weight:700;font-size:clamp(24px,2.6vw,30px);text-transform:uppercase;letter-spacing:.01em;line-height:1.1}
+.menu li .n small{display:block;font-family:var(--f-body);font-size:14px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--led-faint);margin-top:4px}
+.menu li .lead-dots{border-bottom:1px dotted var(--led-faint);transform:translateY(-6px);opacity:.6}
+.menu li .p{font-family:var(--f-accent);font-style:italic;font-size:clamp(28px,3vw,36px);color:var(--brass);font-variant-numeric:tabular-nums;line-height:1}
+.menu li .p sup{font-size:.5em;vertical-align:.5em;margin-right:2px;font-family:var(--f-body);font-style:normal;color:var(--brass-dim)}
+.menu li[aria-pressed="true"] .n{color:var(--brass)}
+.menu-note{
+  margin-top:8px;padding:24px;border:1px solid var(--line);background:var(--wall-2);
+  display:grid;gap:10px;color:var(--led-dim);font-size:15px;
+}
+.menu-note strong{color:var(--led);font-weight:600}
+@media (max-width:860px){.menu{grid-template-columns:1fr}}
+
+/* ---------- galleria ---------- */
+.gallery{background:var(--wall-2);border-block:1px solid var(--line)}
+.shots{
+  display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(90px,11vw,150px);gap:12px;
+}
+.shot{position:relative;overflow:hidden;margin:0;background:var(--wall-3)}
+.shot img,.shot video{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .5s}
+.shot:hover img,.shot:hover video{transform:scale(1.035)}
+.shot figcaption{
+  position:absolute;left:12px;bottom:12px;padding:6px 10px;background:rgba(12,13,14,.78);
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--led);
+}
+.s1{grid-column:1/6;grid-row:span 4}
+.s2{grid-column:6/9;grid-row:span 2}
+.s3{grid-column:9/13;grid-row:span 3}
+.s4{grid-column:6/9;grid-row:span 2}
+.s5{grid-column:9/13;grid-row:span 3}
+.s6{grid-column:1/6;grid-row:span 2}
+.shots .quote{
+  grid-column:6/9;grid-row:span 2;background:var(--wall);border:1px solid var(--line);
+  display:grid;align-content:center;padding:22px;gap:10px;
+}
+.shots .quote p{font-family:var(--f-accent);font-style:italic;font-size:clamp(22px,2.2vw,30px);line-height:1.15}
+.shots .quote span{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass)}
+@media (max-width:860px){
+  .shots{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto}
+  .shot{aspect-ratio:3/4}
+  .s1,.s2,.s3,.s4,.s5,.s6,.shots .quote{grid-column:auto;grid-row:auto}
+  .s1{grid-column:1/-1;aspect-ratio:4/3}
+  .shots .quote{grid-column:1/-1}
+}
+
+/* ---------- prenota ---------- */
+.book-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,80px);align-items:start}
+.form{display:grid;gap:26px;padding:clamp(22px,3vw,38px);border:1px solid var(--line);background:var(--wall-2)}
+.field{display:grid;gap:10px}
+.field > label,.field > .lbl{font-size:12.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--led-faint)}
+select,input[type=text]{
+  width:100%;font:500 16px var(--f-body);color:var(--led);background:var(--wall);
+  border:1px solid var(--line);border-radius:2px;padding:14px 14px;appearance:none;
+}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--led-dim) 50%),linear-gradient(135deg,var(--led-dim) 50%,transparent 50%);
+  background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat;padding-right:40px}
+select:focus,input:focus{outline:none;border-color:var(--brass)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip span{
+  display:block;min-width:64px;text-align:center;padding:10px 12px;border:1px solid var(--line);
+  font-size:14px;font-weight:500;cursor:pointer;color:var(--led-dim);transition:all .15s;
+  font-variant-numeric:tabular-nums;line-height:1.25;
+}
+.chip span small{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--led-faint)}
+.chip input:checked + span{border-color:var(--brass);color:var(--led);background:rgba(201,165,106,.1)}
+.chip input:checked + span small{color:var(--brass)}
+.chip input:focus-visible + span{outline:2px solid var(--brass);outline-offset:2px}
+.chip input:disabled + span{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.form .summary{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-top:1px solid var(--line);padding-top:20px}
+.form .summary span{color:var(--led-dim);font-size:15px}
+.form .summary strong{font-family:var(--f-accent);font-style:italic;font-weight:400;font-size:34px;color:var(--brass);font-variant-numeric:tabular-nums}
+.form .btn{width:100%}
+.form .hint{font-size:13.5px;color:var(--led-faint);text-align:center}
+
+.info{display:grid;gap:0;border-top:1px solid var(--line)}
+.info-row{display:grid;grid-template-columns:130px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
+.info-row dt{font-size:12.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--led-faint);padding-top:6px}
+.info-row dd{margin:0;display:grid;gap:6px}
+.info-row .big{font-family:var(--f-display);font-weight:700;font-size:clamp(28px,3.2vw,38px);text-transform:uppercase;line-height:1.05;font-variant-numeric:tabular-nums}
+.info-row .big a{text-decoration:none}
+.info-row .big a:hover{color:var(--brass)}
+.info-row .sub{color:var(--led-dim);font-size:15px}
+.info-row .sub a{color:var(--brass);text-underline-offset:3px}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:6px}
+.week div{text-align:center;padding:8px 0 6px;border:1px solid var(--line);font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--led-dim)}
+.week div small{display:block;font-weight:400;font-size:10.5px;color:var(--led-faint);letter-spacing:0}
+.week .off{opacity:.35}
+.week .today{border-color:var(--brass);color:var(--brass)}
+.ro{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:var(--led-dim)}
+.ro i{display:inline-flex;width:24px;height:16px;flex:none}
+.ro i b{flex:1}
+@media (max-width:900px){.book-grid{grid-template-columns:1fr}}
+@media (max-width:460px){.info-row{grid-template-columns:1fr;gap:8px}}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding-block:56px calc(40px + env(safe-area-inset-bottom,0px))}
+.foot{display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center}
+.foot img{width:96px;height:96px}
+.foot .big{font-family:var(--f-display);font-weight:900;font-size:clamp(40px,6vw,76px);text-transform:uppercase;line-height:.9}
+.foot .big .dot{color:var(--brass)}
+.foot .meta{color:var(--led-faint);font-size:14px;display:grid;gap:6px;text-align:right}
+.foot .meta a{color:var(--led-dim);text-decoration:none}
+.foot .meta a:hover{color:var(--led)}
+@media (max-width:760px){.foot{grid-template-columns:1fr;text-align:left}.foot .meta{text-align:left}}
+
+/* barra mobile */
+.mbar{
+  display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
+  background:rgba(19,20,22,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-top:1px solid var(--line);gap:10px;
+}
+.mbar .btn{flex:1;padding:13px 10px}
+@media (max-width:700px){.mbar{display:flex}footer{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}}
+
+/* entrata */
+.rise{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.rise.d1{animation-delay:.12s}.rise.d2{animation-delay:.24s}.rise.d3{animation-delay:.36s}
+@keyframes rise{from{transform:translateY(18px);opacity:.001}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Barbershop.23, torna su">
+      <img src="assets/img/logo.png" alt="" width="40" height="40">
+      <span>Barbershop<b>.</b>23</span>
+    </a>
+    <nav aria-label="Sezioni">
+      <ul>
+        <li><a href="#mestiere">Il mestiere</a></li>
+        <li><a href="#listino">Listino</a></li>
+        <li><a href="#lavori">Lavori</a></li>
+        <li><a href="#prenota">Orari e contatti</a></li>
+      </ul>
+    </nav>
+    <a class="btn" href="#prenota">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
+      <span class="lbl">Prenota</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding:0" aria-labelledby="h-hero">
+    <canvas class="ceiling" id="ceiling" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div>
+        <p class="eyebrow rise">Verona · Borgo Roma · dal 2026</p>
+        <h1 id="h-hero" class="rise d1" style="margin-top:22px">Barber<br>shop<span class="dot">.</span>23
+          <span class="it">l'eccellenza del taglio rumeno</span>
+        </h1>
+      </div>
+      <div class="hero-copy rise d2">
+        <p class="lead">Una sola poltrona, una luce che non perdona, un barbiere che lavora al millimetro. <strong>Fade, tagli classici e barba</strong> in via Pier Fortunato Calvi 18.</p>
+        <div class="actions">
+          <a class="btn brass" href="#prenota">Prenota il tuo taglio</a>
+          <a class="btn ghost" href="#listino">Vedi il listino</a>
+        </div>
+        <span class="status" id="status"><i></i><span>Martedì – sabato, 10:00 – 20:00</span></span>
+      </div>
+    </div>
+  </section>
+
+  <div class="pole" role="presentation"></div>
+
+  <section class="craft" id="mestiere" aria-labelledby="h-craft">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Il mestiere</p>
+          <h2 id="h-craft">Fades, classic cuts, <span class="it">sharp details</span></h2>
+        </div>
+        <p>Scuola rumena, precisione italiana. Sfumature pulite dalla nuca alla tempia, linee definite a rasoio e un taglio pensato per la forma della tua testa, non per la foto che hai salvato.</p>
+      </div>
+      <div class="craft-grid">
+        <article class="craft-item">
+          <svg class="hexicon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 3 38.5 12.5v19L22 41 5.5 31.5v-19Z"/><path d="M13 30h18M13 25h18M15 20h14M18 15h8" /></svg>
+          <h3>Fade</h3>
+          <p>Low, mid, high, skin o burst: sfumature graduali senza stacchi, rifinite a macchinetta e shaver.</p>
+        </article>
+        <article class="craft-item">
+          <svg class="hexicon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 3 38.5 12.5v19L22 41 5.5 31.5v-19Z"/><circle cx="16" cy="28" r="3.5"/><circle cx="28" cy="28" r="3.5"/><path d="m18.5 25.5 11-12M25.5 25.5l-11-12"/></svg>
+          <h3>Classic cut</h3>
+          <p>Forbice e pettine per i tagli che non passano di moda: scalati, side part, crop texturizzati.</p>
+        </article>
+        <article class="craft-item">
+          <svg class="hexicon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 3 38.5 12.5v19L22 41 5.5 31.5v-19Z"/><path d="M14 27 30 17M14 31l16-10"/></svg>
+          <h3>Dettagli</h3>
+          <p>Contorni, linee disegnate e barba modellata. È lì che si vede la differenza tra un taglio e un buon taglio.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="listino" aria-labelledby="h-menu">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Listino prezzi</p>
+          <h2 id="h-menu">Prezzi chiari, <span class="it">nessuna sorpresa</span></h2>
+        </div>
+        <p>Tocca un servizio per portarlo direttamente nella prenotazione. I prezzi sono quelli in vetrina, IVA inclusa.</p>
+      </div>
+
+      <div class="menu">
+        <div class="menu-col">
+          <div class="menu-group">
+            <h3><span>Haircuts</span><span>Taglio</span></h3>
+            <ul>
+              <li data-svc="taglio" tabindex="0" role="button" aria-pressed="false"><span class="n">Taglio<small>Fade o classico, rifinitura inclusa</small></span><span class="lead-dots"></span><span class="p"><sup>€</sup>15</span></li>
+              <li data-svc="taglio-shampoo" tabindex="0" role="button" aria-pressed="false"><span class="n">Taglio + shampoo<small>Lavaggio e styling finale</small></span><span class="lead-dots"></span><span class="p"><sup>€</sup>17</span></li>
+              <li data-svc="taglio-barba" tabindex="0" role="button" aria-pressed="false"><span class="n">Taglio + barba<small>Il servizio più richiesto</small></span><span class="lead-dots"></span><span class="p"><sup>€</sup>25</span></li>
+              <li data-svc="completo" tabindex="0" role="button" aria-pressed="false"><span class="n">Taglio + barba + shampoo<small>Il trattamento completo</small></span><span class="lead-dots"></span><span class="p"><sup>€</sup>27</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="menu-col">
+          <div class="menu-group">
+            <h3><span>Shave</span><span>Barba</span></h3>
+            <ul>
+              <li data-svc="barba" tabindex="0" role="button" aria-pressed="false"><span class="n">Solo barba<small>Modellatura e contorni</small></span><span class="lead-dots"></span><span class="p"><sup>€</sup>10</span></li>
+              <li data-svc="barba-macchinetta" tabindex="0" role="button" aria-pressed="false"><span class="n">Barba con macchinetta<small>Rifinitura veloce</small></span><span class="lead-dots"></span><span class="p"><sup>€</sup>5</span></li>
+            </ul>
+          </div>
+          <div class="menu-group">
+            <h3><span>Kids</span><span>7 – 10 anni</span></h3>
+            <ul>
+              <li data-svc="bambino" tabindex="0" role="button" aria-pressed="false"><span class="n">Taglio bambino<small>Dai 7 ai 10 anni</small></span><span class="lead-dots"></span><span class="p"><sup>€</sup>10</span></li>
+            </ul>
+          </div>
+          <div class="menu-note">
+            <span class="ro"><i aria-hidden="true"><b style="background:#002b7f"></b><b style="background:#fcd116"></b><b style="background:#ce1126"></b></i><strong>Vorbim românește.</strong></span>
+            <span>Frizerie românească a Verona: si parla italiano e rumeno. Pagamento in contanti e carta.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="lavori" aria-labelledby="h-work">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Dalla poltrona</p>
+          <h2 id="h-work">Lavori <span class="it">& salone</span></h2>
+        </div>
+        <p>Pareti grafite, luce esagonale bianca e una poltrona con la mantella a righe. Qui sotto alcuni tagli usciti dal salone: altri ogni settimana su Instagram <a href="https://www.instagram.com/barbershop.23.vr/" target="_blank" rel="noopener" style="color:var(--brass)">@barbershop.23.vr</a>.</p>
+      </div>
+      <div class="shots">
+        <figure class="shot s1"><img src="assets/img/salone-ampio.jpg" alt="Il salone Barbershop.23 con il soffitto a esagoni LED, la poltrona e il palo da barbiere luminoso" loading="lazy"><figcaption>Il salone</figcaption></figure>
+        <figure class="shot s2"><img src="assets/img/fade-corona.jpg" alt="Mid fade con sfumatura sulla nuca" loading="lazy" style="object-position:50% 40%"><figcaption>Mid fade</figcaption></figure>
+        <figure class="shot s3"><img src="assets/img/fade-linee.jpg" alt="Burst fade con due linee disegnate dietro l'orecchio" loading="lazy" style="object-position:50% 45%"><figcaption>Burst fade + linee</figcaption></figure>
+        <div class="quote s4"><p>“Una luce che non perdona nessuna imperfezione.”</p><span>Sotto gli esagoni</span></div>
+        <figure class="shot s5"><video src="assets/video.mp4" poster="assets/img/salone-hex.jpg" muted loop playsinline preload="none" aria-label="Video dal salone" id="vid"></video><figcaption>Dal salone · video</figcaption></figure>
+        <figure class="shot s6"><img src="assets/img/salone-hex.jpg" alt="Postazione con lavatesta e soffitto luminoso a nido d'ape" loading="lazy" style="object-position:50% 70%"><figcaption>La postazione</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="prenota" aria-labelledby="h-book">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Prenota</p>
+          <h2 id="h-book">Scegli, <span class="it">poi scrivici</span></h2>
+        </div>
+        <p>Componi la richiesta qui sotto: si apre WhatsApp con il messaggio già scritto e ti confermiamo l'orario. Preferisci parlare? Chiama il +39 379 346 1723.</p>
+      </div>
+
+      <div class="book-grid">
+        <form class="form" id="bookForm" novalidate>
+          <div class="field">
+            <label for="svc">Servizio</label>
+            <select id="svc" name="svc">
+              <option value="taglio" data-p="15">Taglio · €15</option>
+              <option value="taglio-shampoo" data-p="17">Taglio + shampoo · €17</option>
+              <option value="taglio-barba" data-p="25" selected>Taglio + barba · €25</option>
+              <option value="completo" data-p="27">Taglio + barba + shampoo · €27</option>
+              <option value="barba" data-p="10">Solo barba · €10</option>
+              <option value="barba-macchinetta" data-p="5">Barba con macchinetta · €5</option>
+              <option value="bambino" data-p="10">Taglio bambino (7–10 anni) · €10</option>
+            </select>
+          </div>
+          <div class="field">
+            <span class="lbl" id="lbl-day">Giorno</span>
+            <div class="chips" id="days" role="radiogroup" aria-labelledby="lbl-day"></div>
+          </div>
+          <div class="field">
+            <span class="lbl" id="lbl-time">Fascia oraria</span>
+            <div class="chips" role="radiogroup" aria-labelledby="lbl-time">
+              <label class="chip"><input type="radio" name="slot" id="slot-m" value="mattina (10–13)" checked><span>Mattina<small>10 – 13</small></span></label>
+              <label class="chip"><input type="radio" name="slot" id="slot-p" value="pomeriggio (13–17)"><span>Pomeriggio<small>13 – 17</small></span></label>
+              <label class="chip"><input type="radio" name="slot" id="slot-s" value="sera (17–20)"><span>Sera<small>17 – 20</small></span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="name">Il tuo nome</label>
+            <input type="text" id="name" name="name" placeholder="Es. Marco" autocomplete="given-name">
+          </div>
+          <div class="summary"><span id="sumText">Taglio + barba</span><strong id="sumPrice">€25</strong></div>
+          <a class="btn brass" id="waLink" href="https://wa.me/393793461723" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+            Invia richiesta su WhatsApp
+          </a>
+          <p class="hint">La prenotazione è confermata solo dopo la nostra risposta.</p>
+        </form>
+
+        <dl class="info">
+          <div class="info-row">
+            <dt>Telefono</dt>
+            <dd><span class="big"><a href="tel:+393793461723">+39 379 346 1723</a></span><span class="sub">Chiamate e WhatsApp, anche per appuntamenti in giornata.</span></dd>
+          </div>
+          <div class="info-row">
+            <dt>Indirizzo</dt>
+            <dd><span class="big">Via P. F. Calvi 18</span><span class="sub">37135 Verona, Borgo Roma · <a href="https://www.google.com/maps/search/?api=1&query=Via+Pier+Fortunato+Calvi+18+Verona" target="_blank" rel="noopener">Apri in Google Maps</a></span></dd>
+          </div>
+          <div class="info-row">
+            <dt>Orari</dt>
+            <dd>
+              <span class="big">10:00 – 20:00</span>
+              <div class="week" id="week">
+                <div class="off">Lun<small>chiuso</small></div>
+                <div>Mar<small>10–20</small></div>
+                <div>Mer<small>10–20</small></div>
+                <div>Gio<small>10–20</small></div>
+                <div>Ven<small>10–20</small></div>
+                <div>Sab<small>10–20</small></div>
+                <div class="off">Dom<small>chiuso</small></div>
+              </div>
+            </dd>
+          </div>
+          <div class="info-row">
+            <dt>Social</dt>
+            <dd><span class="big"><a href="https://www.instagram.com/barbershop.23.vr/" target="_blank" rel="noopener">@barbershop.23.vr</a></span><span class="sub">Nuovi tagli ogni settimana.</span></dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="pole" role="presentation"></div>
+<footer>
+  <div class="wrap foot">
+    <img src="assets/img/logo.png" alt="Logo Barbershop.23, Verona 2026" width="96" height="96" loading="lazy">
+    <p class="big">Barbershop<span class="dot">.</span>23<br><span class="it" style="font-size:.42em;color:var(--led-dim);text-transform:none">Gentlemen's club & barberia</span></p>
+    <div class="meta">
+      <span>Via Pier Fortunato Calvi 18 · Verona</span>
+      <a href="tel:+393793461723">+39 379 346 1723</a>
+      <span>© <span id="yr">2026</span> Barbershop.23</span>
+    </div>
+  </div>
+</footer>
+
+<div class="mbar">
+  <a class="btn ghost" href="tel:+393793461723">Chiama</a>
+  <a class="btn brass" href="#prenota">Prenota</a>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- soffitto LED esagonale ---------- */
+  var cv = document.getElementById('ceiling'), ctx = cv.getContext('2d');
+  var hexes = [], W = 0, H = 0, dpr = 1, t0 = performance.now(), mouse = {x:-1e4,y:-1e4};
+  function build(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    hexes = [];
+    var R = Math.max(52, Math.min(110, W / 11)); // raggio esagono
+    var w = Math.sqrt(3) * R, h = 1.5 * R;
+    var cols = Math.ceil(W / w) + 2, rows = Math.ceil(H / h) + 2;
+    var cx0 = W * 0.62, cy0 = H * 0.18;
+    for (var r = -1; r < rows; r++){
+      for (var c = -1; c < cols; c++){
+        var x = c * w + (r % 2 ? w / 2 : 0), y = r * h;
+        // disegna solo il "cluster" del soffitto, come nel salone
+        var dx = (x - cx0) / (W * 0.62), dy = (y - cy0) / (H * 0.95);
+        var d = Math.sqrt(dx * dx + dy * dy);
+        if (d > 1.05) continue;
+        hexes.push({x:x, y:y, R:R, d:d, on: 0.12 + d * 1.1 + Math.random() * 0.35, flick: Math.random()});
+      }
+    }
+  }
+  function hexPath(x, y, R){
+    ctx.beginPath();
+    for (var i = 0; i < 6; i++){
+      var a = Math.PI / 180 * (60 * i - 30);
+      var px = x + R * Math.cos(a), py = y + R * Math.sin(a);
+      i ? ctx.lineTo(px, py) : ctx.moveTo(px, py);
+    }
+    ctx.closePath();
+  }
+  function draw(now){
+    var t = reduce ? 99 : (now - t0) / 1000;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+    ctx.lineJoin = 'round';
+    for (var i = 0; i < hexes.length; i++){
+      var hx = hexes[i];
+      var k = t - hx.on; // tempo dall'accensione
+      if (k < 0) continue;
+      var a;
+      if (k < 0.28) a = (Math.sin(k * 90 + hx.flick * 10) > 0 ? 0.9 : 0.15); // sfarfallio del neon
+      else a = 1;
+      a *= (1 - hx.d * 0.55);
+      var md = Math.hypot(mouse.x - hx.x, mouse.y - hx.y);
+      var boost = md < hx.R * 2.2 ? (1 - md / (hx.R * 2.2)) : 0;
+      var inset = hx.R * 0.94;
+      hexPath(hx.x, hx.y, inset);
+      ctx.fillStyle = 'rgba(238,241,244,' + (0.012 + boost * 0.05) + ')';
+      ctx.fill();
+      ctx.shadowColor = 'rgba(230,238,255,' + (0.55 * a) + ')';
+      ctx.shadowBlur = 18 + boost * 16;
+      ctx.strokeStyle = 'rgba(238,241,244,' + Math.min(1, a * (0.78 + boost * 0.3)) + ')';
+      ctx.lineWidth = 3.2;
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+    }
+    if (!reduce) requestAnimationFrame(draw);
+  }
+  build();
+  requestAnimationFrame(draw);
+  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){ build(); if (reduce) draw(0); }, 120); });
+  var hero = cv.parentElement;
+  hero.addEventListener('pointermove', function(e){ var b = cv.getBoundingClientRect(); mouse.x = e.clientX - b.left; mouse.y = e.clientY - b.top; });
+  hero.addEventListener('pointerleave', function(){ mouse.x = mouse.y = -1e4; });
+
+  /* ---------- nav ---------- */
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 10); }, {passive:true});
+
+  /* ---------- aperto / chiuso (ora di Verona) ---------- */
+  function romeNow(){
+    try {
+      var p = new Intl.DateTimeFormat('en-GB', {timeZone:'Europe/Rome', weekday:'short', hour:'2-digit', minute:'2-digit', hour12:false}).formatToParts(new Date());
+      var o = {}; p.forEach(function(x){ o[x.type] = x.value; });
+      var map = {Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6};
+      return {day: map[o.weekday], min: (+o.hour % 24) * 60 + (+o.minute)};
+    } catch(e){ var d = new Date(); return {day:d.getDay(), min:d.getHours() * 60 + d.getMinutes()}; }
+  }
+  var now = romeNow(), st = document.getElementById('status');
+  var openDay = now.day >= 2 && now.day <= 6, isOpen = openDay && now.min >= 600 && now.min < 1200;
+  st.classList.toggle('open', isOpen);
+  st.lastElementChild.textContent = isOpen ? 'Aperto ora · chiude alle 20:00'
+    : (openDay && now.min < 600 ? 'Chiuso · apre oggi alle 10:00' : 'Chiuso · martedì – sabato, 10:00 – 20:00');
+  var wk = document.getElementById('week').children; // Lun..Dom
+  var idx = (now.day + 6) % 7; wk[idx].classList.add('today');
+
+  /* ---------- prenotazione ---------- */
+  var names = ['dom','lun','mar','mer','gio','ven','sab'], longN = ['domenica','lunedì','martedì','mercoledì','giovedì','venerdì','sabato'];
+  var mesi = ['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'];
+  var days = document.getElementById('days'), base = new Date(), added = 0, first = true;
+  for (var i = 0; i < 14 && added < 6; i++){
+    var d = new Date(base.getFullYear(), base.getMonth(), base.getDate() + i), wd = d.getDay();
+    if (wd < 2) continue; // chiuso dom e lun
+    if (i === 0 && now.min >= 1170) continue; // troppo tardi per oggi
+    var lab = document.createElement('label'); lab.className = 'chip';
+    var id = 'day-' + d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+    var txt = (i === 0 ? 'Oggi' : i === 1 ? 'Domani' : names[wd].charAt(0).toUpperCase() + names[wd].slice(1));
+    lab.innerHTML = '<input type="radio" name="day" id="' + id + '" value="' + longN[wd] + ' ' + d.getDate() + ' ' + mesi[d.getMonth()] + '"' + (first ? ' checked' : '') + '><span>' + txt + '<small>' + d.getDate() + ' ' + mesi[d.getMonth()] + '</small></span>';
+    days.appendChild(lab); first = false; added++;
+  }
+
+  var svc = document.getElementById('svc'), sumText = document.getElementById('sumText'), sumPrice = document.getElementById('sumPrice');
+  var items = document.querySelectorAll('.menu li[data-svc]');
+  function sync(){
+    var o = svc.options[svc.selectedIndex];
+    sumText.textContent = o.text.split(' · ')[0];
+    sumPrice.textContent = '€' + o.getAttribute('data-p');
+    items.forEach(function(li){ li.setAttribute('aria-pressed', li.getAttribute('data-svc') === svc.value ? 'true' : 'false'); });
+  }
+  svc.addEventListener('change', sync); sync();
+  function pick(li){
+    svc.value = li.getAttribute('data-svc'); sync();
+    document.getElementById('prenota').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
+    setTimeout(function(){ svc.focus({preventScroll:true}); }, reduce ? 0 : 600);
+  }
+  items.forEach(function(li){
+    li.addEventListener('click', function(){ pick(li); });
+    li.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); pick(li); } });
+  });
+
+  var form = document.getElementById('bookForm'), wa = document.getElementById('waLink');
+  function waUpdate(){
+    var day = form.querySelector('input[name=day]:checked'), slot = form.querySelector('input[name=slot]:checked');
+    var nm = form.querySelector('#name').value.trim();
+    var msg = 'Ciao Barbershop.23! ' + (nm ? 'Sono ' + nm + '. ' : '') + 'Vorrei prenotare: ' + sumText.textContent + ' (' + sumPrice.textContent + ')'
+      + (day ? ', ' + day.value : '') + (slot ? ', ' + slot.value : '') + '. Grazie!';
+    wa.href = 'https://wa.me/393793461723?text=' + encodeURIComponent(msg);
+  }
+  form.addEventListener('input', waUpdate); form.addEventListener('change', waUpdate);
+  svc.addEventListener('change', waUpdate);
+  form.addEventListener('submit', function(e){ e.preventDefault(); wa.click(); });
+  items.forEach(function(li){ li.addEventListener('click', waUpdate); });
+  waUpdate();
+
+  /* ---------- video in galleria ---------- */
+  var vid = document.getElementById('vid');
+  if (vid && 'IntersectionObserver' in window && !reduce){
+    new IntersectionObserver(function(en){ en.forEach(function(x){ if (x.isIntersecting){ vid.play().catch(function(){}); } else vid.pause(); }); }, {threshold:.35}).observe(vid);
+  }
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
